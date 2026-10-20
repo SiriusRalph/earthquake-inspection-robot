@@ -1,0 +1,194 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <world name="default">
+
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <scene>
+      <shadows>false</shadows>
+    </scene>
+
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose frame=''>0.319654 -0.235002 9.29441 0 1.5138 0.009599</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+
+    <physics type="ode">
+      <real_time_update_rate>1000.0</real_time_update_rate>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <ode>
+        <solver>
+          <type>quick</type>
+          <iters>150</iters>
+          <precon_iters>0</precon_iters>
+          <sor>1.400000</sor>
+          <use_dynamic_moi_rescaling>1</use_dynamic_moi_rescaling>
+        </solver>
+        <constraints>
+          <cfm>0.00001</cfm>
+          <erp>0.2</erp>
+          <contact_max_correcting_vel>2000.000000</contact_max_correcting_vel>
+          <contact_surface_layer>0.01000</contact_surface_layer>
+        </constraints>
+      </ode>
+    </physics>
+
+    <model name="building_outer_walls">
+      <static>true</static>
+      <link name="walls">
+
+        <collision name="north_collision">
+          <pose>0 5 1.25 0 0 0</pose>
+          <geometry><box><size>10.4 0.2 2.5</size></box></geometry>
+        </collision>
+        <visual name="north_visual">
+          <pose>0 5 1.25 0 0 0</pose>
+          <geometry><box><size>10.4 0.2 2.5</size></box></geometry>
+          <material><script><uri>file:///home/sara/earthquake_ws/models/damaged_textures/materials/scripts</uri><uri>file:///home/sara/earthquake_ws/models/damaged_textures/materials/textures</uri><name>DamagedBuilding/Stucco</name></script></material>
+        </visual>
+
+        <collision name="south_collision">
+          <pose>0 -5 1.25 0 0 0</pose>
+          <geometry><box><size>10.4 0.2 2.5</size></box></geometry>
+        </collision>
+        <visual name="south_visual">
+          <pose>0 -5 1.25 0 0 0</pose>
+          <geometry><box><size>10.4 0.2 2.5</size></box></geometry>
+          <material><script><uri>file:///home/sara/earthquake_ws/models/damaged_textures/materials/scripts</uri><uri>file:///home/sara/earthquake_ws/models/damaged_textures/materials/textures</uri><name>DamagedBuilding/Stucco</name></script></material>
+        </visual>
+
+        <collision name="east_collision">
+          <pose>5 0 1.25 0 0 0</pose>
+          <geometry><box><size>0.2 10.4 2.5</size></box></geometry>
+        </collision>
+        <visual name="east_visual">
+          <pose>5 0 1.25 0 0 0</pose>
+          <geometry><box><size>0.2 10.4 2.5</size></box></geometry>
+          <material><script><uri>file:///home/sara/earthquake_ws/models/damaged_textures/materials/scripts</uri><uri>file:///home/sara/earthquake_ws/models/damaged_textures/materials/textures</uri><name>DamagedBuilding/Stucco</name></script></material>
+        </visual>
+
+        <collision name="west_collision">
+          <pose>-5 0 1.25 0 0 0</pose>
+          <geometry><box><size>0.2 10.4 2.5</size></box></geometry>
+        </collision>
+        <visual name="west_visual">
+          <pose>-5 0 1.25 0 0 0</pose>
+          <geometry><box><size>0.2 10.4 2.5</size></box></geometry>
+          <material><script><uri>file:///home/sara/earthquake_ws/models/damaged_textures/materials/scripts</uri><uri>file:///home/sara/earthquake_ws/models/damaged_textures/materials/textures</uri><name>DamagedBuilding/Stucco</name></script></material>
+        </visual>
+
+      </link>
+    </model>
+
+    <model name="cracks_group_1">
+      <static>true</static>
+      <link name="cracks">
+        <visual name="crack_north_1">
+          <pose>-1.140 4.895 0.550 0 0.862 0</pose>
+          <geometry><box><size>0.204 0.01 0.03</size></box></geometry>
+          <material><ambient>0.08 0.08 0.08 1</ambient><diffuse>0.08 0.08 0.08 1</diffuse></material>
+        </visual>
+        <visual name="crack_north_2">
+          <pose>-1.120 4.895 0.420 0 2.159 0</pose>
+          <geometry><box><size>0.164 0.01 0.03</size></box></geometry>
+          <material><ambient>0.08 0.08 0.08 1</ambient><diffuse>0.08 0.08 0.08 1</diffuse></material>
+        </visual>
+        <visual name="crack_north_3">
+          <pose>-1.070 4.895 0.300 0 0.588 0</pose>
+          <geometry><box><size>0.236 0.01 0.03</size></box></geometry>
+          <material><ambient>0.08 0.08 0.08 1</ambient><diffuse>0.08 0.08 0.08 1</diffuse></material>
+        </visual>
+        <visual name="crack_east_1">
+          <pose>4.895 1.560 0.510 -0.862 0 0</pose>
+          <geometry><box><size>0.01 0.204 0.03</size></box></geometry>
+          <material><ambient>0.08 0.08 0.08 1</ambient><diffuse>0.08 0.08 0.08 1</diffuse></material>
+        </visual>
+        <visual name="crack_east_2">
+          <pose>4.895 1.580 0.380 -2.159 0 0</pose>
+          <geometry><box><size>0.01 0.164 0.03</size></box></geometry>
+          <material><ambient>0.08 0.08 0.08 1</ambient><diffuse>0.08 0.08 0.08 1</diffuse></material>
+        </visual>
+        <visual name="crack_east_3">
+          <pose>4.895 1.620 0.260 -0.644 0 0</pose>
+          <geometry><box><size>0.01 0.220 0.03</size></box></geometry>
+          <material><ambient>0.08 0.08 0.08 1</ambient><diffuse>0.08 0.08 0.08 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="debris_group_1">
+      <static>true</static>
+      <link name="debris">
+        <collision name="d1_col"><pose>2.0 2.5 0.10 0 0 0.4</pose><geometry><box><size>0.50 0.35 0.20</size></box></geometry></collision>
+        <visual name="d1_vis"><pose>2.0 2.5 0.10 0 0 0.4</pose><geometry><box><size>0.50 0.35 0.20</size></box></geometry><material><ambient>0.45 0.43 0.40 1</ambient><diffuse>0.45 0.43 0.40 1</diffuse></material></visual>
+        <collision name="d2_col"><pose>2.35 2.8 0.125 0.1 0 1.0</pose><geometry><box><size>0.30 0.30 0.25</size></box></geometry></collision>
+        <visual name="d2_vis"><pose>2.35 2.8 0.125 0.1 0 1.0</pose><geometry><box><size>0.30 0.30 0.25</size></box></geometry><material><ambient>0.38 0.36 0.34 1</ambient><diffuse>0.38 0.36 0.34 1</diffuse></material></visual>
+        <collision name="d3_col"><pose>1.7 2.85 0.075 0 0 -0.6</pose><geometry><box><size>0.40 0.25 0.15</size></box></geometry></collision>
+        <visual name="d3_vis"><pose>1.7 2.85 0.075 0 0 -0.6</pose><geometry><box><size>0.40 0.25 0.15</size></box></geometry><material><ambient>0.45 0.43 0.40 1</ambient><diffuse>0.45 0.43 0.40 1</diffuse></material></visual>
+        <collision name="d4_col"><pose>-2.8 2.5 0.125 0.12 0 0.9</pose><geometry><box><size>0.60 0.40 0.25</size></box></geometry></collision>
+        <visual name="d4_vis"><pose>-2.8 2.5 0.125 0.12 0 0.9</pose><geometry><box><size>0.60 0.40 0.25</size></box></geometry><material><ambient>0.38 0.36 0.34 1</ambient><diffuse>0.38 0.36 0.34 1</diffuse></material></visual>
+        <collision name="d5_col"><pose>-2.35 2.9 0.09 0 0 -0.3</pose><geometry><box><size>0.35 0.30 0.18</size></box></geometry></collision>
+        <visual name="d5_vis"><pose>-2.35 2.9 0.09 0 0 -0.3</pose><geometry><box><size>0.35 0.30 0.18</size></box></geometry><material><ambient>0.45 0.43 0.40 1</ambient><diffuse>0.45 0.43 0.40 1</diffuse></material></visual>
+        <collision name="d6_col"><pose>-3.2 2.1 0.06 0 0 1.4</pose><geometry><box><size>0.45 0.25 0.12</size></box></geometry></collision>
+        <visual name="d6_vis"><pose>-3.2 2.1 0.06 0 0 1.4</pose><geometry><box><size>0.45 0.25 0.12</size></box></geometry><material><ambient>0.38 0.36 0.34 1</ambient><diffuse>0.38 0.36 0.34 1</diffuse></material></visual>
+      </link>
+    </model>
+
+    <model name="collapse_group_1">
+      <static>true</static>
+      <link name="slab">
+        <collision name="slab_col">
+          <pose>2.5 -4.495 0.535 0.611 0 0</pose>
+          <geometry><box><size>1.8 0.15 1.2</size></box></geometry>
+        </collision>
+        <visual name="slab_vis">
+          <pose>2.5 -4.495 0.535 0.611 0 0</pose>
+          <geometry><box><size>1.8 0.15 1.2</size></box></geometry>
+          <material><ambient>0.32 0.32 0.34 1</ambient><diffuse>0.32 0.32 0.34 1</diffuse></material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="building_floor">
+      <static>true</static>
+      <link name="floor">
+        <visual name="floor_visual">
+          <pose>0 0 0 0 0 0</pose>
+          <geometry><box><size>10.4 10.4 0.006</size></box></geometry>
+          <material>
+            <script>
+              <uri>file:///home/sara/earthquake_ws/models/damaged_textures/materials/scripts</uri>
+              <uri>file:///home/sara/earthquake_ws/models/damaged_textures/materials/textures</uri>
+              <name>DamagedBuilding/Floor</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>
+
+    <model name="columns_group_1">
+      <static>true</static>
+      <link name="columns">
+        <collision name="c1_col"><pose>0 0 1.25 0 0 0</pose><geometry><box><size>0.5 0.5 2.5</size></box></geometry></collision>
+        <visual name="c1_vis"><pose>0 0 1.25 0 0 0</pose><geometry><box><size>0.5 0.5 2.5</size></box></geometry><material><ambient>0.55 0.55 0.55 1</ambient><diffuse>0.55 0.55 0.55 1</diffuse></material></visual>
+        <collision name="c2_col"><pose>3 0.5 1.25 0 0 0</pose><geometry><box><size>0.5 0.5 2.5</size></box></geometry></collision>
+        <visual name="c2_vis"><pose>3 0.5 1.25 0 0 0</pose><geometry><box><size>0.5 0.5 2.5</size></box></geometry><material><ambient>0.55 0.55 0.55 1</ambient><diffuse>0.55 0.55 0.55 1</diffuse></material></visual>
+        <collision name="c3_col"><pose>-0.5 -3 1.25 0 0 0</pose><geometry><box><size>0.5 0.5 2.5</size></box></geometry></collision>
+        <visual name="c3_vis"><pose>-0.5 -3 1.25 0 0 0</pose><geometry><box><size>0.5 0.5 2.5</size></box></geometry><material><ambient>0.55 0.55 0.55 1</ambient><diffuse>0.55 0.55 0.55 1</diffuse></material></visual>
+        <collision name="c4_col"><pose>-3.5 -3 1.25 0 0 0</pose><geometry><box><size>0.5 0.5 2.5</size></box></geometry></collision>
+        <visual name="c4_vis"><pose>-3.5 -3 1.25 0 0 0</pose><geometry><box><size>0.5 0.5 2.5</size></box></geometry><material><ambient>0.55 0.55 0.55 1</ambient><diffuse>0.55 0.55 0.55 1</diffuse></material></visual>
+      </link>
+    </model>
+
+  </world>
+</sdf>

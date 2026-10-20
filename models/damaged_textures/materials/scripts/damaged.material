@@ -1,0 +1,39 @@
+material DamagedBuilding/Stucco
+{
+  technique
+  {
+    pass
+    {
+      ambient 1 1 1 1
+      diffuse 1 1 1 1
+      specular 0.05 0.05 0.05 1 8
+      texture_unit
+      {
+        texture stucco_diff.jpg
+        filtering anisotropic
+        max_anisotropy 8
+        scale 0.2 0.8
+      }
+    }
+  }
+}
+
+material DamagedBuilding/Floor
+{
+  technique
+  {
+    pass
+    {
+      ambient 1 1 1 1
+      diffuse 1 1 1 1
+      specular 0.05 0.05 0.05 1 8
+      texture_unit
+      {
+        texture floor_diff.jpg
+        filtering anisotropic
+        max_anisotropy 8
+        scale 0.2 0.2
+      }
+    }
+  }
+}
